@@ -11,7 +11,9 @@ import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.soloader.OpenSourceMergedSoMapping
 import com.facebook.soloader.SoLoader
+import com.geofence.ReactNativeBridgePackage
 import com.kotlinNotifications.NotificaitonPackage
+import com.service.ServicePackage
 import com.tester.TestPackage
 
 class MainApplication : Application(), ReactApplication {
@@ -23,6 +25,8 @@ class MainApplication : Application(), ReactApplication {
               // Packages that cannot be autolinked yet can be added manually here, for example:
                 add(TestPackage())
                 add(NotificaitonPackage());
+                add(ServicePackage());
+                add(ReactNativeBridgePackage());
             }
 
         override fun getJSMainModuleName(): String = "index"

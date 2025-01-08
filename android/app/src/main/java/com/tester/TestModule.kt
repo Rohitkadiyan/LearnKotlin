@@ -22,4 +22,5 @@ class TestModule(context:ReactApplicationContext):ReactContextBaseJavaModule(con
         val data ="{Name:'Aman',Class:'BCA'}"
         callback.invoke(data)
     }
+
 }

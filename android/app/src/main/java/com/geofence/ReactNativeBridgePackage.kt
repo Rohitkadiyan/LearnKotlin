@@ -9,9 +9,7 @@ import java.util.Collections
 class ReactNativeBridgePackage:ReactPackage {
     //Create a Native Module
     override fun createNativeModules(context:ReactApplicationContext): List<NativeModule> {
-        val modules = ArrayList<NativeModule>();
-        modules.add(ReactNativeBridgeModule(context));
-        return  modules;
+       return listOf(ReactNativeBridgeModule(context))
     }
     //Create a ViewManger
     override fun createViewManagers(context: ReactApplicationContext):List<ViewManager<*,*>>{

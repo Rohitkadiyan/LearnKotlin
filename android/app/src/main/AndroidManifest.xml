@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Include required permissions for Google Mobile Ads to run. -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,6 +18,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name="com.service.MyForegroundService"
+            android:exported="true"
+            android:foregroundServiceType="location" />
+        <service android:name="com.geofence.HeadlessJsTask" android:exported="true"/>
+        <receiver android:name="com.service.ServiceBrodcastReceiver" android:exported="true"/>
+        <receiver android:name="com.geofence.GeofenceBroadcastReceiver" android:exported="true"/>
 
         <!--
             Adding this meta data is required as of Google Mobile Ads SDK version 17.0.0 as explained in

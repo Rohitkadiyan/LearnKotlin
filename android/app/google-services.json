@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1024600030517",
+    "project_id": "notificationdemo-bd920",
+    "storage_bucket": "notificationdemo-bd920.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024600030517:android:528c0286cb81994b79e07c",
+        "android_client_info": {
+          "package_name": "com.learnkotlin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOeWOJ0IRIk-QeuqOeFyjAe1OzVCsjTQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
