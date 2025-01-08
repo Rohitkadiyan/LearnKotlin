@@ -8,7 +8,7 @@ import com.facebook.react.bridge.ReactMethod
 
 class ForegroundServiceModule(private val context:ReactApplicationContext):ReactContextBaseJavaModule(context) {
     override fun getName(): String {
-        return "ForegroundServiceModule"
+        return "ServiceModules"
     }
 
     @ReactMethod
@@ -24,6 +24,19 @@ class ForegroundServiceModule(private val context:ReactApplicationContext):React
     @ReactMethod
     fun stopService(){
         val intent = Intent(context, MyForegroundService::class.java)
+        context.stopService(intent)
+    }
+
+    @ReactMethod
+    fun startBackService (){
+        val intent = Intent(context,BackgroundService::class.java)
+        context.startService(intent)
+    }
+
+    @ReactMethod
+    fun stopBackService (){
+        Log.d("StopSerivce","true")
+        val intent = Intent(context,BackgroundService::class.java)
         context.stopService(intent)
     }
 }

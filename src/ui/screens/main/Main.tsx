@@ -4,8 +4,9 @@ import React from 'react';
 import Style from '../../components/custom/Style';
 // import HomeFireBase from '../firebase/HomeFireBase';
 // import Service from '../service/Service';
+import Chats from '../../../chats/screens/Chats';
 // import Testor from '../test/Testor';
-import GeoFence from '../geofence/GeoFence';
+// import GeoFence from '../geofence/GeoFence';
 
 const Main = () => {
   return (
@@ -18,7 +19,8 @@ const Main = () => {
        */}
       {/* <HomeFireBase /> */}
       {/* <Service /> */}
-      <GeoFence />
+      {/* <GeoFence /> */}
+      <Chats />
     </View>
   );
 };
