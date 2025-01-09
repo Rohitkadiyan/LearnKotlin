@@ -3,12 +3,15 @@ import React from 'react';
 import Style from './src/ui/components/custom/Style';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Navigation from './src/chats/navigation/Navigation';
+import ToastProvider from './src/chats/utils/Toast/ToastProvider';
 
 const App = () => {
   return (
     <SafeAreaProvider style={[Style.flex]}>
       {/* <Main /> */}
-      <Navigation />
+      <ToastProvider>
+        <Navigation />
+      </ToastProvider>
     </SafeAreaProvider>
   );
 };

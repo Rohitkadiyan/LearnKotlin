@@ -9,3 +9,11 @@ export const navigate = async (routeName: string, params?: object) => {
         navigationRef.dispatch(CommonActions.navigate(routeName, params));
     }
 };
+
+//go Back
+export const goBack = () => {
+    navigationRef.isReady();
+    if (navigationRef.isReady()) {
+        navigationRef.dispatch(CommonActions.goBack());
+    }
+};
