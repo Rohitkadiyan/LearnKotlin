@@ -1,7 +1,8 @@
 import React, {FC} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import UserAvtar from './UserAvtar';
-import {goBack} from '../utils/navigationUtils';
+import {navigate} from '../utils/navigationUtils';
+import {ROUTES} from '../utils/constants';
 
 interface ChatHeadProps {
   user: {
@@ -14,7 +15,9 @@ interface ChatHeadProps {
 const ChatHeadScreen: FC<ChatHeadProps> = ({user}) => {
   return (
     <View style={styles.header}>
-      <TouchableOpacity onPress={() => goBack()} style={styles.backButton}>
+      <TouchableOpacity
+        onPress={() => navigate(ROUTES.HOME)}
+        style={styles.backButton}>
         <Image
           source={require('../assets/Images/Back.png')}
           style={styles.backIcon}

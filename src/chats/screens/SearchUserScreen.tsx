@@ -11,13 +11,15 @@ import {
 } from 'react-native';
 import database from '@react-native-firebase/database';
 import {goBack, navigate} from '../utils/navigationUtils';
-import {ROUTES} from '../utils/constants';
+import {KEY, ROUTES} from '../utils/constants';
+import {storage} from '../utils/mmkvStorage';
 
 const SearchUserScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState<any>([]);
 
+  //initail user loaded
   useEffect(() => {
     // Search handler
     const handleSearch = async () => {
@@ -36,7 +38,6 @@ const SearchUserScreen = () => {
             id: key,
             ...data[key],
           }));
-
           setUsers(userList);
         } else {
           setUsers([]);
@@ -50,11 +51,46 @@ const SearchUserScreen = () => {
     handleSearch();
   }, [searchQuery]);
 
+  //handler Relation of users
+  const handlerRelation = (data: any) => {
+    // console.log('userEfect');
+    const JSON_Data = storage.getString(KEY.USER_DATA) as string;
+    const user_data = JSON.parse(JSON_Data);
+    let myData = {
+      name: user_data?.name ?? '',
+      id: user_data?.id ?? '',
+      image: user_data?.image ?? '',
+      email: user_data?.email ?? '',
+      about: user_data?.about ?? '',
+      lastMsg: 'Hey',
+    };
+
+    //store chats into clicked user
+    database()
+      .ref(`/chatsList/${data?.id}/${user_data?.id}`)
+      .update(myData)
+      .then(() => console.log('Data updated.'));
+
+    // //store chats into itself
+    let dataCopy = {...data};
+    delete dataCopy.password;
+    dataCopy.lastMsg = 'Hello';
+
+    database()
+      .ref(`/chatsList/${user_data.id}/${data.id}`)
+      .update(dataCopy)
+      .then(() => {
+        console.log('data Update');
+      });
+    navigate(ROUTES.USER_CHAT, {data});
+  };
+
   // Render a single user item
   const renderItem = ({item}: any) => (
     <TouchableOpacity
       style={styles.userCard}
-      onPress={() => navigate(ROUTES.USER_CHAT, {data: item})}>
+      // onPress={() => navigate(ROUTES.USER_CHAT, { data: item })}
+      onPress={() => handlerRelation(item)}>
       <Text style={styles.userName}>{item.name}</Text>
       <Text style={styles.userEmail}>{item.email}</Text>
     </TouchableOpacity>

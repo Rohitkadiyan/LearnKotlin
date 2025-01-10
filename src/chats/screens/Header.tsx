@@ -47,7 +47,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 10,
     alignItems: 'center',
-    marginBottom: 25,
+    marginBottom: 10,
+    paddingBottom: 10,
+    borderBottomWidth: 0.5,
+    borderColor: 'lightgreen',
   },
   logo: {
     height: 60,

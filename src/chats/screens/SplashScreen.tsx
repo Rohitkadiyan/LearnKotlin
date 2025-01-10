@@ -13,7 +13,7 @@ const SplashScreen = () => {
       if (USER_KEY) {
         navigate(ROUTES.HOME);
       } else {
-        navigate(ROUTES.SIGNUP);
+        navigate(ROUTES.LOGIN);
       }
     }, 3000);
 
